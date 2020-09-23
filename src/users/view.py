@@ -8,11 +8,14 @@ service = UserService()
 @user_api.route('/', methods=['GET'])
 def get_users():
   user_list = service.list_()
-  
-  return jsonify(user_list)
+  return jsonify(user_list), 200
+
+@user_api.route('/<id>', methods=['GET'])
+def get_user(id):
+  user = service.get_one(id)
+  return jsonify(user), 200
 
 @user_api.route('/', methods=['POST'])
 def post_user():
   created_user = service.insert(request.get_json())
-
-  return jsonify({'id': str(created_user.id)})
+  return jsonify({'id': str(created_user.id)}), 201

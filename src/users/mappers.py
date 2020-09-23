@@ -7,6 +7,16 @@ def to_object(data):
 
   return User(username, email, enabled)
 
+def to_dict(data):
+  user = {}
+  user['id'] = data.id
+  user['username'] = data.username
+  user['email'] = data.email
+  user['enabled'] = data.enabled
+  user['created_at'] = data.created_at
+
+  return user
+
 def to_dict_list(data):
   user_list = [None] * len(data)
 
