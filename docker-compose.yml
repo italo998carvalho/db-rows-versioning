@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  db:
+    image: postgres:12.3-alpine
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db_rows_versioning
+    ports:
+      - 15432:5432
+
+  db-test:
+    image: postgres:12.3-alpine
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db_rows_versioning
+    ports:
+      - 25432:5432
