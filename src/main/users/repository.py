@@ -20,6 +20,7 @@ class UserRepository:
 
     _user.username = user['username']
     _user.email = user['email']
+    _user.client_id = user['client_id']
     _user.state = user['state']
 
     db.session.commit()
@@ -28,7 +29,7 @@ class UserRepository:
   def delete(self, id):
     _user = User.query.filter_by(id=id).first()
 
-    _user.state = False
+    _user.state = States.DISABLED
 
     db.session.commit()
     return _user
