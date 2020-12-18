@@ -11,14 +11,14 @@ class UserService:
 
   def get_one(self, id):
     user = self.repository.get_by_id(id)
-    return to_dict(user)
+    return from_object_to_dict(user)
 
   def insert(self, data):
-    user = to_object(data)
+    user = from_dict_to_object(data)
     return self.repository.create(user)
 
   def update(self, id, data):
-    user = to_object(data)
+    user = from_dict_to_object(data)
     return self.repository.update(id, data)
 
   def delete(self, id):

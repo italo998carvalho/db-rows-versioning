@@ -1,12 +1,13 @@
 from app import db
 from users.model import User
+from fsm.values import States
 
 class UserRepository:
   def get_all(self):
-    return User.query.filter_by(enabled = True).all()
+    return User.query.filter_by(state = States.ENABLED).all()
 
   def get_by_id(self, id):
-    return User.query.filter_by(id = id, enabled = True).first()
+    return User.query.filter_by(id = id, state = States.ENABLED).first()
 
   def create(self, user):
     db.session.add(user)
@@ -19,7 +20,7 @@ class UserRepository:
 
     _user.username = user['username']
     _user.email = user['email']
-    _user.enabled = user['enabled']
+    _user.state = user['state']
 
     db.session.commit()
     return user
@@ -27,7 +28,7 @@ class UserRepository:
   def delete(self, id):
     _user = User.query.filter_by(id=id).first()
 
-    _user.enabled = False
+    _user.state = False
 
     db.session.commit()
     return _user
