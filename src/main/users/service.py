@@ -19,7 +19,7 @@ class UserService:
 
   def update(self, id, data):
     user = from_dict_to_object(data)
-    return self.repository.update(id, data)
+    return self.repository.update(id, user)
 
   def delete(self, id):
     return self.repository.delete(id)

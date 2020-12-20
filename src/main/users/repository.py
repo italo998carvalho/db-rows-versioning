@@ -1,4 +1,4 @@
-from app import db
+from extensions import db
 from users.model import User
 from fsm.values import States
 
@@ -18,10 +18,10 @@ class UserRepository:
   def update(self, id, user):
     _user = User.query.filter_by(id = id).first()
 
-    _user.username = user['username']
-    _user.email = user['email']
-    _user.client_id = user['client_id']
-    _user.state = user['state']
+    _user.username = user.username
+    _user.email = user.email
+    _user.client_id = user.client_id
+    _user.state = user.state
 
     db.session.commit()
     return user
