@@ -5,6 +5,5 @@ class States(Enum):
   DISABLED = 2
 
 class Events(Enum):
-  CREATE = 1
-  UPDATE = 2
-  DELETE = 3
+  UPDATE = 1
+  DELETE = 2
