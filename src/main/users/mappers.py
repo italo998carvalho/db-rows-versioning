@@ -1,11 +1,10 @@
 from users.model import User
 from fsm.mappers import *
 
-def from_dict_to_object(data):
+def from_dict_to_object(data, state):
   username = data['username']
   email = data['email']
   client_id = data['client_id']
-  state = map_string_to_state(data['state'])
 
   return User(username, email, client_id, state)
 
