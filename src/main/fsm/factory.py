@@ -1,4 +1,4 @@
-from src.main.fsm.state_machine import StateMachine
+from fsm.state_machine import StateMachine
 
 class StateMachineFactory:
   def __init__(self):
